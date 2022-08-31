@@ -20,3 +20,5 @@ pip3 install mysql-connector-python
 instalar flask
 
 pip3 install Flask
+set FLASK_ENV=development 
+export FLASK_APP=todo    -> todo es el nombre de la carpeta del donde se encuentran los modulos
