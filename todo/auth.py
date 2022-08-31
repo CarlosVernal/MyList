@@ -1,9 +1,7 @@
-from contextlib import redirect_stderr
-from crypt import methods
 import functools
 
 from flask import (
-    blueprints, flash, g, render_template,request, url_for, session
+    blueprints, flash, g, render_template,request, url_for, session, redirect
 )
 
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -40,3 +38,28 @@ def register():
         
         flash(error)
     return render_template('auth/register.html')
+
+@bp.route('login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+    db, c = get_db()
+    c.execute(
+        'select * from user where username = %s', (username,) #se usa la coma aunque sea 1 porque es una tupla
+    )
+    user = c.fetchone()
+
+    if user is None:
+        error = 'Usuario y/o contraseña inválida'
+    elif not check_password_hash(user['password'], password):
+        error = 'Usuario y/o contraseña inválida'
+    
+    if error is None:
+        session.clear()
+        session['user_id'] = user['id']
+        return redirect(url_for('index'))
+    
+    flash(error)
+
+    return render_template('auth/login.html')
