@@ -1,0 +1,22 @@
+instalacion de venv
+
+-python3 -m venv venv
+
+activar venv
+
+cd venv/scripts
+. activate
+cd ..
+cd ..
+
+instalar werkzeug
+
+pip3 install werkzeug
+
+instalar conector de base de datos
+
+pip3 install mysql-connector-python
+
+instalar flask
+
+pip3 install Flask
