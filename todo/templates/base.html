@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <title>{% block title %}{% endblock %} - MyList</title>
-<link rel="stylesheet" href="{{ url_for{'static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-    <h1> MyList</h1>
+    <h1>MyList</h1>
     <ul>
-        {% if g.user  %}
+        {% if g.user %}
             <li><span>{{ g.user['username'] }}</span></li>
             <li><a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a></li>
         {% else %}

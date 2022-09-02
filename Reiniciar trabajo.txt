@@ -1,0 +1,11 @@
+export FLASK_DATABASE_HOST='localhost'
+
+export FLASK_DATABASE_USER='CarlosVernal'
+
+export FLASK_DATABASE_PASSWORD='Manager1993'
+
+export FLASK_DATABASE='prueba'
+
+flask init-db
+
+flasK run
