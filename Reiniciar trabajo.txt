@@ -6,6 +6,10 @@ export FLASK_DATABASE_PASSWORD='Manager1993'
 
 export FLASK_DATABASE='prueba'
 
+export FLASK_APP=todo
+
+export FLASK_ENV=development
+
 flask init-db
 
 flasK run
