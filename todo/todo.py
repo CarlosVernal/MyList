@@ -16,3 +16,13 @@ def index():
     )
     todos = c.fetchall()
     return render_template('todo/index.html', todos=todos)
+
+@bp.route('/create', methods=['GET', 'POST'])
+@login_required
+def create():
+    return render_template('todo/create.html')
+
+@bp.route('/update', methods=['GET', 'POST'])
+@login_required
+def update():
+    return ''
