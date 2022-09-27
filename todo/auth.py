@@ -49,7 +49,6 @@ def login():
         c.execute(
             'select * from user where username =%s',(username,)
         )
-        #se usa la coma luego de username porque es una tupla
         user = c.fetchone()
 
         if user is None:
@@ -83,7 +82,7 @@ def login_required(view):
     def wrapped_view (**kwargs):
         if g.user is None:
             return redirect(url_for('auth.login'))
-    
+        
         return view(**kwargs)
     
     return wrapped_view
